@@ -6,12 +6,12 @@
 ## This code is free software; you can redistribute it and/or modify
 ## it under the same terms as Perl itself.
 ##
-## $Id: TripleDES.pm,v 0.22 1999/08/06 18:07:58 root Exp root $
+## $Id: TripleDES.pm,v 0.24 1999/10/13 23:26:15 root Exp root $
 
 package Crypt::TripleDES; 
 use Crypt::PPDES; 
 use vars qw( $AUTOLOAD $VERSION); 
-( $VERSION )  = '$Revision: 0.22 $' =~ /\s(\d+\.\d+)\s/; 
+( $VERSION )  = '$Revision: 0.24 $' =~ /\s(\d+\.\d+)\s/; 
 
 sub AUTOLOAD { 
     my ( $self, @args ) = @_; 
@@ -27,6 +27,7 @@ sub decrypt3 {
 
     my ( $self, $plaintext, $passphrase, $flag ) = @_; 
     my %keyvecs;
+    $passphrase .= ' ' x (16*3); 
 
     for ( 0..2 ) {  
         my @kvs = Crypt::PPDES::des_set_key( pack( "H*", substr($passphrase, 16*$_, 16 )));
@@ -36,8 +37,8 @@ sub decrypt3 {
     my $size = length ( $plaintext );
     my $tail = 8 - ( $size % 8 ); $tail = 0 if $tail > 7;
        $plaintext .= chr(32) x $tail; 
-    my $size = length ( $plaintext );
-    my $cyphertext;
+       $size = length ( $plaintext );
+    my $cyphertext = "";
 
     for ( 0 .. (($size)/8) -1 ) { 
      my $pt = substr( $plaintext, $_*8, 8 );
@@ -101,9 +102,11 @@ Inverse of encrypt3().
 
 =head1 AUTHOR
 
- Vipul Ved Prakash, mail@vipul.net
+ Vipul Ved Prakash, mail@vipul.net    
  Eric Young, eay@psych.psy.uq.oz.au
 
+ Patches: 
+ Jonathan Mayer <jmayer@cobaltnet.com>
 
 =cut
 

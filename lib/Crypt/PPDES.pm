@@ -340,6 +340,7 @@ sub des_set_key
 
 	# Get the bytes in the order we want.
 	@key=unpack("C8",$param);
+ 	push (@key, 0,0,0,0,0,0,0,0); 
 
 	$c=	($key[0]    )|
 		($key[1]<< 8)|
