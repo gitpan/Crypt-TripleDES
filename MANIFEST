@@ -1,5 +1,5 @@
-Crypt/TripleDES.pm
-Crypt/PPDES.pm
+lib/Crypt/TripleDES.pm
+lib/Crypt/PPDES.pm
 MANIFEST
 Makefile.PL
 test.pl

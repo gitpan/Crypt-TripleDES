@@ -6,12 +6,12 @@
 ## This code is free software; you can redistribute it and/or modify
 ## it under the same terms as Perl itself.
 ##
-## $Id: TripleDES.pm,v 0.20 1999/08/01 21:04:12 root Exp root $
+## $Id: TripleDES.pm,v 0.22 1999/08/06 18:07:58 root Exp root $
 
 package Crypt::TripleDES; 
 use Crypt::PPDES; 
 use vars qw( $AUTOLOAD $VERSION); 
-( $VERSION )  = '$Revision: 0.20 $' =~ /\s(\d+\.\d+)\s/; 
+( $VERSION )  = '$Revision: 0.22 $' =~ /\s(\d+\.\d+)\s/; 
 
 sub AUTOLOAD { 
     my ( $self, @args ) = @_; 

@@ -3,5 +3,5 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     'NAME'	=> 'Crypt::TripleDES',
-    'VERSION_FROM' => 'Crypt/TripleDES.pm', # finds $VERSION
+    'VERSION_FROM' => 'lib/Crypt/TripleDES.pm', # finds $VERSION
 );
